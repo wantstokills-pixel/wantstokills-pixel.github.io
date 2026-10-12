@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Guerra do Norte | Stark × Bolton</title>
+<meta name="description" content="Regras, mapa e calculadora de batalha da guerra Stark × Bolton, um RPG de turnos para dois lordes.">
+<meta property="og:title" content="A Guerra do Norte | Stark × Bolton">
+<meta property="og:description" content="Regras, mapa e calculadora de batalha da guerra Stark × Bolton, um RPG de turnos para dois lordes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0e13;--s:#141922;--s2:#1b2230;--bd:#262e3b;--tx:#e6e9ee;--mu:#9aa4b2;--st:#9db7d1;--sd:#3f5d7a;--bo:#b3263a;--bod:#5c1220;--bs:#e3b1b8;--r:10px;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg)}
+body{margin:0;background:var(--bg) radial-gradient(900px 420px at 80% -5%,#18222f,transparent) no-repeat;color:var(--tx);font:18px/1.65 "EB Garamond",Georgia,serif;overflow-x:hidden}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;line-height:1.15;margin:0 0 .6em}
+h1{font-size:clamp(2.4rem,9vw,4.4rem)}h2{font-size:clamp(1.6rem,4.5vw,2.4rem)}h3{font-size:1.2rem}
+p{margin:0 0 1em;max-width:62ch}a{color:var(--st)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+.skip{position:absolute;left:-999px;top:0;background:var(--bo);color:#fff;padding:10px 14px;z-index:20}.skip:focus{left:8px}
+:focus-visible{outline:2px solid var(--st);outline-offset:3px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:#0b0e13;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 20px;min-height:56px}
+.brand{font-family:Cinzel,serif;font-weight:700;color:var(--tx);text-decoration:none}
+#mb{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:var(--r);min-height:44px;padding:0 16px;font:inherit}
+#nav{display:none;position:fixed;inset:56px 0 0 0;background:var(--bg);flex-direction:column;padding:24px 20px;gap:4px}
+#nav.open{display:flex}
+#nav a{color:var(--tx);text-decoration:none;font-family:Cinzel,serif;font-size:1.3rem;padding:12px 0;border-bottom:1px solid var(--bd)}
+#nav a.on{color:var(--st)}
+@media(min-width:800px){#mb{display:none}#nav{display:flex;position:static;flex-direction:row;padding:0;gap:22px}#nav a{font-size:.95rem;border:0;padding:8px 0}}
+.hero{position:relative;padding:96px 0 88px;overflow:hidden;border-bottom:1px solid var(--bd)}
+.hero svg{position:absolute;right:-30px;bottom:0;width:min(560px,95vw);opacity:.55;pointer-events:none}
+.hero .wrap{position:relative}
+.sob{color:var(--bs);font-family:Cinzel,serif;margin:0 0 8px}
+.sub{font-family:Cinzel,serif;font-size:clamp(1.3rem,4vw,1.8rem);color:var(--st);margin:0 0 .6em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:var(--r);border:1px solid var(--bd);color:var(--tx);text-decoration:none;font:600 1rem "EB Garamond",serif;background:none;cursor:pointer}
+.btn.p{background:var(--bo);border-color:var(--bo)}.btn:hover{border-color:var(--st)}
+.cards{display:grid;gap:20px}@media(min-width:800px){.cards,.cols{grid-template-columns:1fr 1fr}}
+.card{background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:24px;border-top:3px solid var(--st)}
+.card.b{border-top-color:var(--bo)}.card.b h3{color:var(--bs)}.card.s h3{color:var(--st)}
+.card svg{width:96px;height:auto;float:right;margin:0 0 8px 12px}
+.lema{font-style:italic;color:var(--mu)}
+.card ul{padding-left:1.1em;margin:0}
+.ban{margin:28px 0 0;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;background:var(--s)}
+.ban svg{display:block;width:100%;height:auto}.ban figcaption{padding:10px 16px;color:var(--mu);font-style:italic}
+#mapa-box{display:grid;gap:24px;align-items:start}@media(min-width:800px){#mapa-box{grid-template-columns:420px 1fr}}
+#mapa svg{width:100%;max-width:420px;height:auto;display:block;margin:0 auto}
+.lk{stroke:var(--bd);stroke-width:3}.lk.f{stroke-dasharray:6 6}
+.nd{cursor:pointer}.nd .sh{fill:var(--s);stroke-width:3}.nd.stark .sh{stroke:var(--st)}.nd.bolton .sh{stroke:var(--bo)}.nd.neutro .sh{stroke:var(--mu)}
+.nd.sel .sh{fill:var(--s2);stroke-width:5}.nd text{fill:var(--tx);font:600 12px Cinzel,serif}
+#info{position:sticky;bottom:10px;z-index:4;box-shadow:0 -8px 24px #000c;background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:14px 16px}
+details{background:var(--s);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:10px}
+summary{min-height:44px;padding:10px 18px;cursor:pointer;font:600 1.05rem Cinzel,serif;display:flex;align-items:center;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:"+";margin-left:auto;font-size:1.5rem;color:var(--st)}details[open] summary::after{content:"−"}
+details>div{padding:0 18px 12px}details ul{margin:0 0 1em;padding-left:1.2em}
+.cyc{max-width:360px;display:block;margin:6px auto}
+.ban2{margin-bottom:24px}
+.cols{display:grid;gap:16px}
+fieldset{border:1px solid var(--bd);border-top:3px solid var(--st);border-radius:var(--r);margin:0;padding:16px;background:var(--s)}
+fieldset.bolton{border-top-color:var(--bo)}
+legend{font:700 1.1rem Cinzel,serif;padding:0 8px}
+label{display:block;margin:0 0 10px;font-size:.95rem;color:var(--mu)}
+input[type=number],select{width:100%;min-height:44px;background:var(--s2);border:1px solid var(--bd);color:var(--tx);border-radius:8px;padding:0 10px;font:inherit}
+input[type=checkbox]{width:22px;height:22px;vertical-align:middle;margin-right:8px;accent-color:var(--bo)}
+.row{display:flex;gap:8px;align-items:end}.row label{flex:1;margin:0}
+.glob{display:grid;gap:12px;margin:0 0 16px}@media(min-width:800px){.glob{grid-template-columns:1fr auto auto;align-items:end}}
+#res{margin-top:24px;background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:20px}
+#res table{width:100%;border-collapse:collapse}#res td{vertical-align:top;width:50%;padding:0 10px 10px 0;font-size:.95rem}
+#res td div{display:flex;justify-content:space-between;border-bottom:1px dotted var(--bd);padding:2px 0}
+.tot{font:700 1.2rem Cinzel,serif;margin:8px 0 0}.win{color:var(--ok,#7fb58a)}
+.fr{font-style:italic;color:var(--bs)}
+.btn:disabled{opacity:.4;cursor:default}
+#info .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}#info .btn{padding:0 8px;font-size:.9rem;justify-content:center}#info h3{margin:0 0 .3em;font-size:1.05rem}#info p{margin:0 0 .5em;font-size:.95rem}
+.tk circle{stroke:#0b0e13;stroke-width:2;pointer-events:none}.tk.stark circle{fill:var(--st)}.tk.bolton circle{fill:var(--bo)}.tk text{font:700 11px Cinzel,serif;fill:#0b0e13;pointer-events:none}.tk.bolton text{fill:#fff}
+.turno{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:0 0 16px}.turno .btns{margin:0}.turno p{margin:0}
+@media(min-width:800px){#info{bottom:auto;top:80px}}
+fieldset{display:grid;grid-template-columns:1fr 1fr;column-gap:12px;align-content:start}fieldset label:has(select),fieldset label:has([type=checkbox]),fieldset .row{grid-column:1/-1}
+.acoes{position:sticky;bottom:0;z-index:4;display:flex;gap:10px;padding:10px 0;margin-top:12px;background:#0b0e13f2}.acoes .btn{flex:1;justify-content:center;font-size:.95rem;padding:0 8px}
+footer{border-top:1px solid var(--bd);padding:32px 0;color:var(--mu)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#premissa">Pular para o conteúdo</a>
+<header class="bar">
+<a class="brand" href="#inicio">A Guerra do Norte</a>
+<button id="mb" aria-expanded="false" aria-controls="nav">Menu</button>
+<nav id="nav" aria-label="Seções"><a href="#premissa">Premissa</a><a href="#casas">As Casas</a><a href="#mapa-sec">Mapa</a><a href="#regras">Regras</a><a href="#batalha">Batalha</a></nav>
+</header>
+<main>
+<section class="hero" id="inicio" aria-labelledby="h1">
+<svg viewBox="0 0 400 260" role="img" aria-label="Silhueta de um castelo sob a neve"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f5d7a" stop-opacity=".0"/><stop offset="1" stop-color="#9db7d1" stop-opacity=".25"/></linearGradient></defs><rect width="400" height="260" fill="url(#g)"/><g fill="#0b0e13" stroke="#3f5d7a" stroke-width="1.5"><path d="M20 260V190h40v-30l10-14 10 14v30h30v-60l12-18 12 18v60h40v-40h30V80l14-22 14 22v100h30v-30l10-12 10 12v110z"/><path d="M0 260v-24c60-14 120 4 180-6s150-14 220 4v26z" fill="#141922"/></g><g fill="#e6e9ee" opacity=".6"><circle cx="60" cy="40" r="1.5"/><circle cx="120" cy="90" r="1.5"/><circle cx="230" cy="30" r="1.5"/><circle cx="300" cy="120" r="1.5"/><circle cx="350" cy="50" r="1.5"/><circle cx="190" cy="140" r="1.5"/></g></svg>
+<div class="wrap"><p class="sob">112 d.C.</p><h1 id="h1">A Guerra do Norte</h1><p class="sub">Stark × Bolton</p><p>Dois lordes, um mapa e nenhuma testemunha viva.</p>
+<div class="btns"><a class="btn p" href="#regras">Ler as regras</a><a class="btn" href="#batalha">Calcular uma batalha</a></div></div>
+</section>
+
+<section id="premissa" aria-labelledby="h-p"><div class="wrap"><h2 id="h-p">Premissa</h2>
+<p>O Eclipse acabou, os dragões estão doentes e o reino finge que está em paz. No Norte, ninguém finge.</p>
+<p>Os Stark marcharam por Naerys e voltaram com os mortos. Os Bolton, que um dia usaram coroa vermelha, se aproximaram do Bronze: uma filha do Forte do Pavor foi prometida a Gael Waters, o bastardo que Maekar legitimou. Gael morreu num mercado. O ressentimento, não.</p>
+<p>Entre Winterfell e o Forte do Pavor há uma estrada e nenhuma razão para que ela continue em pé.</p></div></section>
+
+<section id="casas" aria-labelledby="h-c"><div class="wrap"><h2 id="h-c">As Casas</h2>
+<div class="cards">
+<article class="card s"><svg viewBox="0 0 100 120" role="img" aria-label="Brasão Stark: cabeça de lobo cinza sobre campo branco"><path d="M8 8h84v62c0 28-42 44-42 44S8 98 8 70z" fill="#e6e9ee" stroke="#9db7d1" stroke-width="3"/><path d="M28 28l12 16h20l12-16 4 32-26 28-26-28z" fill="#6b7a8c"/><circle cx="42" cy="56" r="3" fill="#0b0e13"/><circle cx="58" cy="56" r="3" fill="#0b0e13"/><path d="M46 74h8l-4 6z" fill="#0b0e13"/></svg>
+<h3>Casa Stark de Winterfell</h3><p class="lema">O Inverno Está Chegando</p>
+<p>Reis do Inverno por milênios. Honra, dever e uma paciência que congela. Têm gente demais, ouro de menos e uma espada valiriana chamada Gelo.</p>
+<ul><li>Exército massivo (10 unidades iniciais)</li><li>Gelo: comandante dá +2 em batalha</li><li>Sede: Winterfell</li></ul></article>
+<article class="card b"><svg viewBox="0 0 100 120" role="img" aria-label="Brasão Bolton: figura humana esfolada em rosa pálido sobre campo negro"><path d="M8 8h84v62c0 28-42 44-42 44S8 98 8 70z" fill="#0b0e13" stroke="#b3263a" stroke-width="3"/><g fill="#e3b1b8"><circle cx="50" cy="32" r="8"/><path d="M42 44h16l4 28-6 24h-4l-2-18-2 18h-4l-6-24z"/><path d="M42 46L24 36l-2 4 20 12zM58 46l18-10 2 4-20 12z"/></g></svg>
+<h3>Casa Bolton do Forte do Pavor</h3><p class="lema">Nossas Lâminas são Afiadas</p>
+<p>Já foram reis, hoje são vassalos que lembram disso. Cultivam o medo como outros cultivam trigo. Têm menos soldados e mais criatividade.</p>
+<ul><li>Exército médio (6 unidades iniciais)</li><li>Arqueiros temidos, Cães de Caça e Terror</li><li>Sede: Forte do Pavor</li></ul></article>
+</div>
+<figure class="ban"><svg viewBox="0 0 800 260" role="img" aria-label="Fortaleza escura em meio à névoa de um pântano"><defs><linearGradient id="f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2230"/><stop offset="1" stop-color="#3a1018"/></linearGradient></defs><rect width="800" height="260" fill="url(#f)"/><path d="M250 260V150h40v-40h30v40h40v-60h40v60h40v-40h30v40h40v110z" fill="#07090d"/><g fill="#e3b1b8" opacity=".5"><rect x="318" y="160" width="6" height="14"/><rect x="420" y="130" width="6" height="14"/></g><ellipse cx="400" cy="250" rx="520" ry="28" fill="#9aa4b2" opacity=".18"/><ellipse cx="200" cy="236" rx="260" ry="16" fill="#9aa4b2" opacity=".12"/></svg><figcaption>O Forte do Pavor. A decoração é intencional.</figcaption></figure>
+</div></section>
+
+<section id="mapa-sec" aria-labelledby="h-m"><div class="wrap"><h2 id="h-m">O Campo de Guerra</h2><p>Toque em um ponto para ver os detalhes.</p>
+<div id="mapa-box"><div id="mapa"></div><div id="info" aria-live="polite"></div></div></div></section>
+
+<section id="regras" aria-labelledby="h-r"><div class="wrap"><h2 id="h-r">As Regras</h2>
+<details open><summary>Recursos</summary><div><p>Cada casa tem 3 números.</p><ul><li><b>Unidades:</b> o tamanho do exército. Cada unidade tem um tipo: Infantaria, Lanceiros, Arqueiros ou Cavalaria.</li><li><b>Provisões:</b> cada exército em campo gasta 1 provisão por 2 unidades por turno, arredondando para cima.</li><li><b>Moral (0 a 10):</b> vitória +1, derrota −1, turno sem provisão −2. Com Moral 3 ou menos, −2 em batalha. Com Moral 0, o exército perde 1 unidade por turno por deserção.</li></ul></div></details>
+<details><summary>Mapa e movimento</summary><div><p>Nove pontos no total: sete em linha de Winterfell ao Forte do Pavor e dois flancos (Bosque e Colinas). Um exército anda 1 ponto por turno, só entre pontos ligados. Entrar no ponto de um exército inimigo é atacar: a batalha acontece ali. Quem ataca partindo do Bosque ou das Colinas ganha +2 (emboscada).</p></div></details>
+<details><summary>O turno</summary><div><p>Os dois jogadores enviam suas ordens em segredo e elas são reveladas juntas. Se os dois marcarem "pronto", o turno corre sem esperar o prazo. Cada jogador tem 2 ações por turno:</p><ul><li><b>Mover:</b> avança o exército 1 ponto. Entrar no ponto do inimigo é atacar.</li><li><b>Recrutar:</b> +2 unidades, custa 2 provisões.</li><li><b>Forragear:</b> +3 provisões, mas o exército fica exposto (−1 em batalha neste turno).</li><li><b>Fortificar:</b> +1 de fortificação no ponto, máximo 2.</li></ul><p><b>Quem age primeiro:</b> turno ímpar, o Stark; turno par, o Bolton. Cada um executa a 1ª ação, depois a 2ª. Ordem inválida ou ausente: o exército fica parado.</p></div></details>
+<details><summary>Tropas e vantagem</summary><div><p>O ciclo de vantagem é: Lanceiros vencem Cavalaria, Cavalaria vence Arqueiros, Arqueiros vencem Infantaria, Infantaria vence Lanceiros. Quem tem a vantagem recebe +2.</p>
+<svg class="cyc" viewBox="0 0 300 220" role="img" aria-label="Ciclo: Lanceiros vencem Cavalaria, que vence Arqueiros, que vencem Infantaria, que vence Lanceiros"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9db7d1"/></marker></defs><g fill="none" stroke="#9db7d1" stroke-width="2" marker-end="url(#ar)"><path d="M115 36H185"/><path d="M232 62V150"/><path d="M185 186H115"/><path d="M68 150V62"/></g><g fill="#1b2230" stroke="#3f5d7a" stroke-width="2"><rect x="20" y="14" width="96" height="44" rx="8"/><rect x="184" y="14" width="96" height="44" rx="8"/><rect x="184" y="160" width="96" height="44" rx="8"/><rect x="20" y="160" width="96" height="44" rx="8"/></g><g fill="#e6e9ee" font-family="Cinzel,serif" font-size="13" text-anchor="middle"><text x="68" y="42">Lanceiros</text><text x="232" y="42">Cavalaria</text><text x="232" y="188">Arqueiros</text><text x="68" y="188">Infantaria</text></g></svg></div></details>
+<details><summary>Batalha</summary><div><p>Antes de rolar, cada lado escolhe em segredo qual tipo de tropa leva à batalha (um que tenha no exército). Cada lado rola 1d20 e soma: unidades ÷ 2 (arredondando para baixo) + bônus. Bônus: vantagem de tropa +2, defensor em casa +2, fortificação +1 a +2, comandante +1 (Stark com Gelo, +2), emboscada +2, Moral baixa −2. O maior total vence. Em empate, vence o defensor. O perdedor perde (diferença ÷ 3) unidades, no mínimo 1. O vencedor perde 1 unidade se a diferença for 4 ou menos. Diferença de 10 ou mais é debandada: o perdedor recua 1 ponto e perde 2 de Moral no total.</p></div></details>
+<details><summary>Cerco</summary><div><p>Uma sede cercada perde 2 provisões por turno. Sem provisão, a Moral cai 2 por turno. Com Moral 0, o portão abre sozinho.</p></div></details>
+<details><summary>Cara de cada casa</summary><div><ul><li><b>Stark:</b> exército massivo e Gelo (comandante +2 em batalha).</li><li><b>Bolton:</b> Arqueiros Bolton (+2 contra Infantaria, soma com a vantagem de tropa). Cães de Caça (1 vez por turno, o Bolton pode perguntar se o Stark vai mover o exército; a resposta deve ser verdadeira). Terror (1 vez por turno, junto de qualquer ação, o Stark perde 1 de Moral).</li></ul></div></details>
+<details><summary>Como começa a campanha (valores sugeridos)</summary><div><ul><li><b>Stark:</b> 10 unidades (4 Infantaria, 3 Lanceiros, 2 Arqueiros, 1 Cavalaria), 12 provisões, Moral 7.</li><li><b>Bolton:</b> 6 unidades (1 Infantaria, 1 Lanceiros, 3 Arqueiros, 1 Cavalaria), 8 provisões, Moral 7.</li></ul></div></details>
+<details><summary>Vitória</summary><div><p>Tomar a sede do inimigo, ou deixar a Moral dele em 0 por 2 turnos seguidos.</p></div></details>
+</div></section>
+
+<section id="batalha" aria-labelledby="h-b"><div class="wrap"><h2 id="h-b">Calculadora de Batalha</h2>
+<figure class="ban ban2"><svg viewBox="0 0 800 160" role="img" aria-label="Estandartes rasgados fincados na neve ao entardecer"><defs><linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1018"/><stop offset="1" stop-color="#1b2230"/></linearGradient></defs><rect width="800" height="160" fill="url(#d)"/><path d="M0 140c120-14 240 6 400-4s280-8 400 4v20H0z" fill="#e6e9ee" opacity=".12"/><g stroke="#07090d" stroke-width="4"><path d="M180 150V40M300 150V60M520 150V50M640 150V70"/></g><path d="M184 44h54l-10 14 10 14h-54z" fill="#9db7d1"/><path d="M304 64h46l-8 12 8 12h-46z" fill="#b3263a"/><path d="M524 54h54l-10 14 10 14h-54z" fill="#9db7d1"/><path d="M644 74h46l-8 12 8 12h-46z" fill="#b3263a"/></svg></figure>
+<form id="calc" onsubmit="return false">
+<div class="turno"><p id="tn" class="tot"></p><div class="btns"><button type="button" class="btn" id="ft">Fechar turno</button><button type="button" class="btn" id="tr">Terror (Bolton)</button></div></div>
+<div class="glob"><label>Quem defende<select id="def"><option value="stark">Stark (em casa)</option><option value="bolton">Bolton (em casa)</option><option value="">Ninguém (campo aberto)</option></select></label></div>
+<div class="cols" id="lados"></div>
+<div class="acoes"><button type="button" class="btn" id="rolar2">Rolar os dois</button><button type="button" class="btn p" id="go">Resolver batalha</button></div></form>
+<div id="res" tabindex="-1" aria-live="polite"><p>Preencha os campos e resolva a batalha.</p></div></div></section>
+</main>
+<footer><div class="wrap"><p>Baseado no Códice de Westeros. Feito para dois lordes e nenhum juiz.</p><a href="#inicio">Voltar ao topo</a></div></footer>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+/* menu */
+var nav=$("nav"),mb=$("mb");
+mb.onclick=function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
+nav.onclick=function(e){if(e.target.tagName==="A"){nav.classList.remove("open");mb.setAttribute("aria-expanded",false)}};
+var links=[].slice.call(nav.querySelectorAll("a"));
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-40% 0px -55% 0px"});["premissa","casas","mapa-sec","regras","batalha"].forEach(function(i){io.observe($(i))})}
+
+/* mapa */
+var NOS=[
+{id:"winterfell",nome:"Winterfell",tipo:"sede",dono:"stark",x:180,y:50,nota:"Sede Stark. Cair aqui é perder a guerra. Pode ser fortificada até 2."},
+{id:"vila-inverno",nome:"Vila de Inverno",tipo:"vila",dono:"stark",x:180,y:130,nota:"Fica sob as muralhas. Quem passa aqui já está quase em casa, ou quase morto."},
+{id:"estrada",nome:"Estrada do Rei",tipo:"estrada",dono:null,x:180,y:210,nota:"Terreno aberto. Cavalaria feliz, arqueiros nervosos."},
+{id:"bosque",nome:"Bosque",tipo:"flanco",dono:null,x:70,y:250,nota:"Quem ataca partindo daqui ganha +2 (emboscada)."},
+{id:"cruzamento",nome:"Cruzamento",tipo:"estrada",dono:null,x:180,y:290,nota:"O ponto onde todo mundo decide ser corajoso."},
+{id:"terras-bolton",nome:"Terras Bolton",tipo:"vila",dono:"bolton",x:180,y:370,nota:"Território Bolton. Os moradores vão fingir que não viram nada."},
+{id:"colinas",nome:"Colinas",tipo:"flanco",dono:null,x:290,y:410,nota:"Quem ataca partindo daqui ganha +2 (emboscada)."},
+{id:"vila-pavor",nome:"Vila do Pavor",tipo:"vila",dono:"bolton",x:180,y:450,nota:"Ninguém aqui comenta o nome do lugar."},
+{id:"forte-pavor",nome:"Forte do Pavor",tipo:"sede",dono:"bolton",x:180,y:530,nota:"Sede Bolton. Pode ser fortificada até 2. Já vem decorada."}];
+var LIG=[["winterfell","vila-inverno"],["vila-inverno","estrada"],["estrada","cruzamento"],["estrada","bosque"],["bosque","cruzamento"],["cruzamento","terras-bolton"],["terras-bolton","colinas"],["terras-bolton","vila-pavor"],["colinas","vila-pavor"],["vila-pavor","forte-pavor"]];
+var byId={};NOS.forEach(function(n){byId[n.id]=n});
+function shape(n){var x=n.x,y=n.y;
+if(n.tipo==="sede")return '<circle class="sh" cx="'+x+'" cy="'+y+'" r="16"/><circle cx="'+x+'" cy="'+y+'" r="8" fill="none" stroke="#e6e9ee" stroke-width="1.5"/>';
+if(n.tipo==="vila")return '<circle class="sh" cx="'+x+'" cy="'+y+'" r="11"/>';
+if(n.tipo==="estrada")return '<polygon class="sh" points="'+x+','+(y-13)+' '+(x+13)+','+y+' '+x+','+(y+13)+' '+(x-13)+','+y+'"/>';
+return '<polygon class="sh" points="'+x+','+(y-13)+' '+(x+13)+','+(y+11)+' '+(x-13)+','+(y+11)+'"/>'}
+var svg='<svg viewBox="0 0 360 560" role="img" aria-labelledby="mt md"><title id="mt">Mapa da guerra</title><desc id="md">Nove pontos em linha de Winterfell ao Forte do Pavor, com os flancos Bosque e Colinas.</desc>';
+LIG.forEach(function(l){var a=byId[l[0]],b=byId[l[1]],f=(a.tipo==="flanco"||b.tipo==="flanco")?" f":"";svg+='<line class="lk'+f+'" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'"/>'});
+NOS.forEach(function(n){var fl=n.tipo==="flanco",tx=fl?n.x:n.x+22,ty=fl?n.y+30:n.y+4;
+svg+='<g class="nd '+(n.dono||"neutro")+'" data-id="'+n.id+'" tabindex="0" role="button" aria-label="'+n.nome+', '+n.tipo+(n.dono?' '+n.dono:'')+'">'+shape(n)+'<text x="'+tx+'" y="'+ty+'"'+(fl?' text-anchor="middle"':'')+'>'+n.nome+'</text></g>'});
+$("mapa").innerHTML=svg+'<g id="fichas"></g></svg>';
+var pos={stark:'winterfell',bolton:'forte-pavor'},cur='winterfell',adj={},NN={stark:'Stark',bolton:'Bolton'};
+LIG.forEach(function(l){(adj[l[0]]=adj[l[0]]||[]).push(l[1]);(adj[l[1]]=adj[l[1]]||[]).push(l[0])});
+function fichas(){var h='';[['stark','S',-14],['bolton','B',14]].forEach(function(t){var n=byId[pos[t[0]]],x=n.x+t[2];h+='<g class="tk '+t[0]+'" aria-hidden="true"><circle cx="'+x+'" cy="'+(n.y-28)+'" r="10"/><text x="'+x+'" y="'+(n.y-24)+'" text-anchor="middle">'+t[1]+'</text></g>'});$('fichas').innerHTML=h}
+function painel(id){var h='<div class="btns">',bt=pos.stark===pos.bolton?byId[pos.stark]:null;['stark','bolton'].forEach(function(c){h+='<button type="button" class="btn" data-m="'+c+'"'+(adj[id].indexOf(pos[c])>-1?'':' disabled')+'>'+NN[c]+' vai para cá</button>'});h+='</div><p>Stark em '+byId[pos.stark].nome+'. Bolton em '+byId[pos.bolton].nome+'.</p>';if(bt)h+='<p class="fr">Batalha em '+bt.nome+'! '+(bt.dono?'Defende '+NN[bt.dono]+' (em casa).':'Campo aberto.')+' Hora da calculadora.</p>';return h}
+$('info').onclick=function(e){var c=e.target.getAttribute('data-m');if(!c)return;pos[c]=cur;if(pos.stark===pos.bolton){$('def').value=byId[cur].dono||'';trava()}sel(cur)};
+function sel(id){cur=id;var n=byId[id];[].forEach.call(document.querySelectorAll(".nd"),function(g){g.classList.toggle("sel",g.dataset.id===id)});
+$("info").innerHTML='<h3>'+n.nome+'</h3><p><b>Tipo:</b> '+n.tipo+'. <b>Dono:</b> '+(n.dono==="stark"?"Stark":n.dono==="bolton"?"Bolton":"ninguém")+'.</p><p>'+n.nota+'</p>'+painel(id);fichas()}
+[].forEach.call(document.querySelectorAll(".nd"),function(g){g.onclick=function(){sel(g.dataset.id)};g.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel(g.dataset.id)}}});
+sel("winterfell");
+
+/* batalha: lógica */
+var VENCE={Lanceiros:"Cavalaria",Cavalaria:"Arqueiros",Arqueiros:"Infantaria",Infantaria:"Lanceiros"};
+function rolarD20(){var b=new Uint32Array(1),lim=Math.floor(4294967296/20)*20;do{crypto.getRandomValues(b)}while(b[0]>=lim);return b[0]%20+1}
+function calcLado(l,i,ctx){var it=[];function add(r,v){if(v!==0)it.push({rotulo:r,valor:v})}
+add("d20",l.d20);add("Unidades ÷ 2",Math.floor(l.unidades/2));
+if(VENCE[l.tipo]===i.tipo)add("Vantagem de tropa",2);
+if(ctx.defensor===l.casa){add("Defesa em casa",2);add("Fortificação",l.fortif)}
+if(l.comandante)add(l.casa==="stark"?"Gelo (comandante)":"Comandante",l.casa==="stark"?2:1);
+if(l.emboscada)add("Emboscada",2);
+if(l.forragear)add("Forrageando",-1);
+if(l.moral<=3)add("Moral baixa",-2);
+if(l.casa==="bolton"&&l.tipo==="Arqueiros"&&i.tipo==="Infantaria")add("Arqueiros Bolton",2);
+return{itens:it,total:it.reduce(function(s,x){return s+x.valor},0)}}
+function resolver(st,bo,ctx){var s=calcLado(st,bo,ctx),b=calcLado(bo,st,ctx),dif=Math.abs(s.total-b.total),L={stark:st,bolton:bo},v=null;
+if(s.total>b.total)v="stark";else if(b.total>s.total)v="bolton";else if(ctx.defensor)v=ctx.defensor;
+var r={stark:s,bolton:b,dif:dif,vencedor:v,empate:v===null,debandada:false,baixas:{stark:0,bolton:0},moral:{stark:0,bolton:0}};
+if(r.empate){r.baixas.stark=Math.min(1,st.unidades);r.baixas.bolton=Math.min(1,bo.unidades);return r}
+var p=v==="stark"?"bolton":"stark";
+r.baixas[p]=Math.min(L[p].unidades,Math.max(1,Math.floor(dif/3)));
+r.baixas[v]=dif<=4?Math.min(1,L[v].unidades):0;
+r.debandada=dif>=10;r.moral[v]=1;r.moral[p]=r.debandada?-2:-1;return r}
+
+/* batalha: interface */
+var TIPOS=["Infantaria","Lanceiros","Arqueiros","Cavalaria"];
+function lado(c,nome,u,rot,pv){return '<fieldset class="'+c+'"><legend>'+nome+'</legend>'+
+'<label>Unidades<input type="number" id="'+c+'-u" min="0" max="30" value="'+u+'"></label>'+
+'<label>Provisões<input type="number" id="'+c+'-p" min="0" max="99" value="'+pv+'"></label>'+
+'<label>Moral<input type="number" id="'+c+'-m" min="0" max="10" value="7"></label>'+
+'<label>Fortif. (defensor)<input type="number" id="'+c+'-f" min="0" max="2" value="0"></label>'+
+'<label>Tipo que engaja<select id="'+c+'-t">'+TIPOS.map(function(t){return '<option>'+t+'</option>'}).join("")+'</select></label>'+
+'<label><input type="checkbox" id="'+c+'-c">'+rot+'</label>'+
+'<label><input type="checkbox" id="'+c+'-e">Ataca do Bosque ou das Colinas (+2)</label>'+
+'<label><input type="checkbox" id="'+c+'-fg">Forrageando (−1)</label>'+
+'<div class="row"><label>d20<input type="number" id="'+c+'-d" min="1" max="20"></label><button type="button" class="btn" data-r="'+c+'">Rolar</button></div></fieldset>'}
+$("lados").innerHTML=lado("stark","Stark",10,"Comandante com Gelo (+2)",12)+lado("bolton","Bolton",6,"Comandante (+1)",8);
+function v(id,min,max,def){var n=parseInt($(id).value,10);if(isNaN(n))n=def;return Math.min(max,Math.max(min,n))}
+function ler(c,defensor){var d=$(c+"-d").value===""?null:v(c+"-d",1,20,1);
+return{casa:c,unidades:v(c+"-u",0,30,c==="stark"?10:6),tipo:$(c+"-t").value,moral:v(c+"-m",0,10,7),comandante:$(c+"-c").checked,emboscada:$(c+"-e").checked,forragear:$(c+"-fg").checked,fortif:defensor===c?v(c+"-f",0,2,0):0,d20:d}}
+function trava(){var d=$("def").value;["stark","bolton"].forEach(function(c){var f=$(c+"-f");f.disabled=d!==c;if(d!==c)f.value=0})}
+$("def").onchange=trava;trava();
+[].forEach.call(document.querySelectorAll("[data-r]"),function(b){b.onclick=function(){$(b.dataset.r+"-d").value=rolarD20()}});
+$("rolar2").onclick=function(){$("stark-d").value=rolarD20();$("bolton-d").value=rolarD20()};
+var FR={ap:["Ganhou. Ninguém vai lembrar por quanto.","Os corvos vão exagerar o placar."],cl:["O vencedor dorme em cama. O perdedor, em vala.","Houve vitória. Houve também lama."],db:["Isso não foi uma retirada. Foi uma corrida.","Os fugitivos chegam antes do aviso."],em:["Os dois lados enterram os mortos e mentem sobre o resultado.","Ninguém venceu. Os dois vão escrever que sim."]};
+function sg(n){return n>0?"+"+n:""+n}
+function col(nome,x){return '<td><b>'+nome+'</b>'+x.itens.map(function(i){return '<div><span>'+i.rotulo+'</span><span>'+sg(i.valor)+'</span></div>'}).join("")+'<p class="tot">Total '+x.total+'</p></td>'}
+$("go").onclick=function(){
+var def=$("def").value;
+["stark","bolton"].forEach(function(c){if($(c+"-d").value==="")$(c+"-d").value=rolarD20()});
+var st=ler("stark",def),bo=ler("bolton",def);if(!st.unidades||!bo.unidades){$("res").innerHTML="<p>Sem exército não há batalha.</p>";return}var r=resolver(st,bo,{defensor:def||null});
+var N={stark:"Stark",bolton:"Bolton"},k=r.empate?"em":r.debandada?"db":r.dif<=4?"ap":"cl",fr=FR[k][Math.floor(Math.random()*2)];
+var h='<table><tr>'+col("Stark",r.stark)+col("Bolton",r.bolton)+'</tr></table>';
+h+='<p class="tot win">'+(r.empate?"Empate sangrento":"Vence "+N[r.vencedor]+" por "+r.dif)+'</p>';
+h+='<p>Baixas: Stark perde '+r.baixas.stark+' unidade(s). Bolton perde '+r.baixas.bolton+' unidade(s).</p>';
+if(!r.empate)h+='<p>Moral: Stark '+sg(r.moral.stark)+' / Bolton '+sg(r.moral.bolton)+'.</p>';
+if(r.debandada)h+='<p><b>Debandada:</b> o perdedor recua 1 ponto.</p>';
+h+='<p class="fr">'+fr+'</p>';
+h+='<div class="btns"><button type="button" class="btn p" id="ap">Aplicar ao placar</button></div>';
+$("res").innerHTML=h;$("res").focus();
+$("ap").onclick=function(){var b=this;["stark","bolton"].forEach(function(c){$(c+"-u").value=Math.max(0,v(c+"-u",0,30,0)-r.baixas[c]);$(c+"-m").value=Math.min(10,Math.max(0,v(c+"-m",0,10,7)+r.moral[c]));$(c+"-d").value="";$(c+"-e").checked=false});b.disabled=true;b.textContent="Aplicado"};
+};
+var turno=1,terror=false,NM={stark:'Stark',bolton:'Bolton'};
+var TF=['O Norte aguenta mais um turno. Os corvos, menos.','Alguém vai levar a culpa pelo estoque. Provavelmente o cozinheiro.','Mais um turno e ninguém pediu paz.'];
+var TT=['O Stark acorda arrepiado e ninguém sabe dizer por quê.','Um mensageiro volta do Forte do Pavor sem as luvas. E sem os dedos.','O Terror faz o que sabe: ninguém dorme direito em Winterfell.'];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function tn(){$('tn').textContent='Turno '+turno+': '+(turno%2?'Stark':'Bolton')+' age primeiro'}
+tn();
+$('ft').onclick=function(){var m=[];['stark','bolton'].forEach(function(c){var u=v(c+'-u',0,30,0),p=v(c+'-p',0,99,0),mo=v(c+'-m',0,10,7),g=Math.ceil(u/2),s=p-g;m.push(NM[c]+' gastou '+g+' provisão(ões).');if(s<0){s=0;mo=Math.max(0,mo-2);m.push(NM[c]+' ficou sem provisão: Moral −2.')}if(mo===0&&u>0){u-=1;m.push(NM[c]+' perde 1 unidade por deserção.')}$(c+'-p').value=s;$(c+'-m').value=mo;$(c+'-u').value=u});turno++;terror=false;tn();$('res').innerHTML='<p class="tot">Turno fechado</p><p>'+m.join('</p><p>')+'</p><p class="fr">'+pick(TF)+'</p>';$('res').focus()};
+$('tr').onclick=function(){var mo=v('stark-m',0,10,7);if(terror){$('res').innerHTML='<p>O Terror já foi usado neste turno.</p>';return}terror=true;mo=Math.max(0,mo-1);$('stark-m').value=mo;$('res').innerHTML='<p class="tot">Terror</p><p>Moral do Stark −1 (agora '+mo+').</p><p class="fr">'+pick(TT)+'</p>';$('res').focus()};
+})();
+</script>
+</body>
+</html>
